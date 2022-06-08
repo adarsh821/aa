@@ -57,17 +57,15 @@ def home():
 def predict():
     
     if request.method == 'POST':
-        
+
         file = request.files['file']
         filename = file.filename
-        file_path = os.path.join(r'./static/',filename)        
-        #                #slashes should be handeled properly
-        # file_path = "static/" +img.filename
+        file_path = os.path.join(r'./static/',filename)
         file.save(file_path)
         print(filename)
         product = prediction(file_path)
         print(product)
-        
+
     return render_template('predict.html', product = product, user_image = file_path)            #file_path can or may used at the place of filename
 
 if __name__ == "__main__":
